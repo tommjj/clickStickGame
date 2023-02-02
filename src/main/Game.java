@@ -13,7 +13,7 @@ public class Game implements Runnable {
     
 
     public Game() {
-        stickManager = new StickManager(100);
+        stickManager = new StickManager(1000);
         gamePanel = new GamePanel(this);
         gameWindow = new GameWindow(gamePanel);
         gamePanel.requestFocus();
@@ -21,6 +21,12 @@ public class Game implements Runnable {
         
         startGameLoop();
     }
+
+    public StickManager getStickManager() {
+        return stickManager;
+    }
+    
+    
     
     public void update() {
         

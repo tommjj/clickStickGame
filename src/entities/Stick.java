@@ -11,9 +11,13 @@ public class Stick {
     private Rectangle stick;
     private Color color; 
     
+    private int type;
+    private boolean active = true;
+    
     public Stick(int x, int y,Color color, int type) {
-        stick = new Rectangle();
-        color = color;
+        this.stick = new Rectangle();
+        this.color = color;
+        this.type = type;
         
         stick.x = x;
         stick.y = y;
@@ -35,14 +39,19 @@ public class Stick {
         return color;
     }
 
-    void draw(Graphics g) {       
+    void draw(Graphics g) {  
         g.setColor(color);
         g.fillRect(stick.x, stick.y, stick.width, stick.height);
         
         g.setColor(Color.black);
         g.drawRect(stick.x, stick.y, stick.width, stick.height);
     }
-    
-    
-    
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 }

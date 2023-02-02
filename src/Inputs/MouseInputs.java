@@ -12,7 +12,7 @@ public class MouseInputs implements MouseListener{
     
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println("Click!");
+        gamePanel.getGame().getStickManager().mouseClick(e);
     }
 
     @Override
