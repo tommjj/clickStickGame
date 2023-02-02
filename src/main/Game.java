@@ -1,7 +1,6 @@
 package main;
 
 import entities.StickManager;
-import java.awt.Color;
 import java.awt.Graphics;
 
 public class Game implements Runnable {
@@ -14,7 +13,7 @@ public class Game implements Runnable {
     
 
     public Game() {
-        stickManager = new StickManager(100 );
+        stickManager = new StickManager(100);
         gamePanel = new GamePanel(this);
         gameWindow = new GameWindow(gamePanel);
         gamePanel.requestFocus();
