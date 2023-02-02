@@ -1,6 +1,9 @@
 package main;
 
 import entities.StickManager;
+import static gameStates.Gamestate.state;
+import gameStates.Menu;
+import gameStates.Playing;
 import java.awt.Graphics;
 
 public class Game implements Runnable {
@@ -8,38 +11,64 @@ public class Game implements Runnable {
     private GamePanel gamePanel;
     private GameWindow gameWindow;
     private Thread gameThread;
-    private final int FPS_SET = 120, UPS_SET = 200;
-    private StickManager stickManager;
-    
+    private final int FPS_SET = 120, UPS_SET = 120;
+
+    private Playing playing;
+    private Menu menu;
 
     public Game() {
-        stickManager = new StickManager(1000);
+        initClasses();
         gamePanel = new GamePanel(this);
         gameWindow = new GameWindow(gamePanel);
         gamePanel.requestFocus();
-        
-        
+
         startGameLoop();
     }
 
-    public StickManager getStickManager() {
-        return stickManager;
+    public Playing getPlaying() {
+        return playing;
+    }
+
+    public Menu getMenu() {
+        return menu;
     }
     
     
     
+    private void initClasses() {
+        playing = new Playing(this);
+        menu = new Menu(this);
+    }
+
     public void update() {
-        
+        switch (state) {
+            case MENU:
+                menu.update();
+                break;
+            case PLAYING:
+                playing.update();
+                break;
+            default:
+                break;
+        }
     }
-    
+
     private void startGameLoop() {
         gameThread = new Thread(this);
         gameThread.start();
     }
-    
+
     public void rander(Graphics g) {
-        
-        stickManager.draw(g);
+        switch (state) {
+            case MENU:
+                menu.draw(g);
+                break;
+            case PLAYING:
+                playing.draw(g);
+                break;
+            default:
+                break;
+        }
     }
 
     @Override

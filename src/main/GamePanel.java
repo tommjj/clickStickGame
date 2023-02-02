@@ -1,5 +1,6 @@
 package main;
 
+import Inputs.KeybroandInputs;
 import Inputs.MouseInputs;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -9,14 +10,16 @@ import utilz.Constants.GameConstants;
 public class GamePanel extends JPanel{
     private Game game;
     private MouseInputs mouseInputs;
+    private KeybroandInputs keybroandInputs;
     
     public GamePanel(Game game) {
         this.game = game;
         mouseInputs = new MouseInputs(this);
+        keybroandInputs = new KeybroandInputs(this);
         setPanelSize();
         
         addMouseListener(mouseInputs);
-        
+        addKeyListener(keybroandInputs);
     } 
 
     public Game getGame() {

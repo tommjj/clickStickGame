@@ -1,19 +1,30 @@
 package entities;
 
+import gameStates.Gamestate;
+import gameStates.Playing;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import static utilz.RandomMethods.*;
 
 public class StickManager {
-
+    private Playing playing;
     private ArrayList<Stick> stickArr;
+    private int numberOfStick;
 
-    public StickManager(int n) {
+    public StickManager(Playing playing) {
         this.stickArr = new ArrayList<>();
+        this.playing = playing;
+    }
+
+    public void createSticks(int value) {
+        if (stickArr.size() > 0) {
+            stickArr.removeAll(stickArr);
+        }
+        this.numberOfStick = value;
         Stick temp;
         int type;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < value; i++) {
             type = GetStickType();
             temp = new Stick(GetRandomX(type), GetRandomY(type), GetRandomColor(), type);
             stickArr.add(temp);
@@ -21,15 +32,22 @@ public class StickManager {
     }
 
     public void update() {
-
+        
     }
 
     public void draw(Graphics g) {
+        int count = 0;
         for (Stick s : stickArr) {
             if (s.isActive()) {
                 s.draw(g);
+                count++;
             }
         }
+        if(count == 0) {
+            Gamestate.setState(Gamestate.MENU);
+            createSticks(numberOfStick);
+        }
+            
     }
 
     public void mouseClick(MouseEvent e) {
@@ -40,7 +58,6 @@ public class StickManager {
                 stickArr.get(value).setActive(false);
             }
         }
-
     }
 
     public int getIndex(int x, int y) {
@@ -49,11 +66,10 @@ public class StickManager {
                 if (stickArr.get(i).getStick().contains(x, y)) {
                     return i;
                 }
-            }       
+            }
         }
         return -1;
     }
-    
 
     public boolean checkTop(int index) {
         for (int i = index + 1; i < stickArr.size(); i++) {

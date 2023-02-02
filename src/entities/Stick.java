@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import static utilz.Constants.Entities.StickConstants.HORIZONTAL;
 import static utilz.Constants.Entities.StickConstants.*;
+import utilz.Constants.GameConstants;
 
 
 public class Stick {
@@ -13,6 +14,11 @@ public class Stick {
     
     private int type;
     private boolean active = true;
+    
+    private int stickOffset = (int) (-3 * GameConstants.SCALE);
+    private int tick = 0, tickTime = 5;
+    
+    private int state;
     
     public Stick(int x, int y,Color color, int type) {
         this.stick = new Rectangle();
@@ -31,19 +37,18 @@ public class Stick {
         }
     }
 
-    public Rectangle getStick() {
-        return stick;
+    public void update() {
+        
     }
 
-    public Color getColor() {
-        return color;
-    }
-
-    void draw(Graphics g) {  
+    public void draw(Graphics g) {  
         g.setColor(color);
         g.fillRect(stick.x, stick.y, stick.width, stick.height);
         
-        g.setColor(Color.black);
+//        g.setColor(Color.black);
+//        g.drawRect(stick.x+1, stick.y+1, stick.width-2, stick.height-2);     
+        
+        g.setColor(Color.BLACK);
         g.drawRect(stick.x, stick.y, stick.width, stick.height);
     }
 
@@ -53,5 +58,13 @@ public class Stick {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+    
+    public Rectangle getStick() {
+        return stick;
+    }
+
+    public Color getColor() {
+        return color;
     }
 }
