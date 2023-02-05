@@ -1,10 +1,13 @@
 package main;
 
-import entities.StickManager;
 import static gameStates.Gamestate.state;
 import gameStates.Menu;
 import gameStates.Playing;
 import java.awt.Graphics;
+import ui.Background;
+import ui.NumberDisplay;
+import utilz.Constants;
+import utilz.Constants.GameConstants;
 
 public class Game implements Runnable {
 
@@ -15,14 +18,24 @@ public class Game implements Runnable {
 
     private Playing playing;
     private Menu menu;
+    private Background background;
+
+    private NumberDisplay numberDisplay;
 
     public Game() {
         initClasses();
         gamePanel = new GamePanel(this);
         gameWindow = new GameWindow(gamePanel);
+        
+        gamePanel.setFocusable(true);
         gamePanel.requestFocus();
-
+        
+        
         startGameLoop();
+    }
+
+    public Background getBackground() {
+        return background;
     }
 
     public Playing getPlaying() {
@@ -32,15 +45,15 @@ public class Game implements Runnable {
     public Menu getMenu() {
         return menu;
     }
-    
-    
-    
+
     private void initClasses() {
+        background = new Background(this);
         playing = new Playing(this);
-        menu = new Menu(this);
+        menu = new Menu(this);       
     }
 
     public void update() {
+        background.update();
         switch (state) {
             case MENU:
                 menu.update();
@@ -59,6 +72,7 @@ public class Game implements Runnable {
     }
 
     public void rander(Graphics g) {
+        background.draw(g);
         switch (state) {
             case MENU:
                 menu.draw(g);
@@ -70,6 +84,7 @@ public class Game implements Runnable {
                 break;
         }
     }
+       
 
     @Override
     public void run() {

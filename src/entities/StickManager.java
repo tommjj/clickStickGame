@@ -11,6 +11,7 @@ public class StickManager {
     private Playing playing;
     private ArrayList<Stick> stickArr;
     private int numberOfStick;
+    private int currentNumberOfStick;
 
     public StickManager(Playing playing) {
         this.stickArr = new ArrayList<>();
@@ -21,7 +22,10 @@ public class StickManager {
         if (stickArr.size() > 0) {
             stickArr.removeAll(stickArr);
         }
-        this.numberOfStick = value;
+        
+        numberOfStick = value;
+        currentNumberOfStick = numberOfStick;
+        
         Stick temp;
         int type;
         for (int i = 0; i < value; i++) {
@@ -46,9 +50,10 @@ public class StickManager {
         if(count == 0) {
             Gamestate.setState(Gamestate.MENU);
             createSticks(numberOfStick);
-        }
-            
+        }       
     }
+    
+    
 
     public void mouseClick(MouseEvent e) {
         int value = getIndex(e.getX(), e.getY());
@@ -56,6 +61,7 @@ public class StickManager {
         if (value >= 0) {
             if (checkTop(value)) {
                 stickArr.get(value).setActive(false);
+                currentNumberOfStick--;
             }
         }
     }
@@ -82,4 +88,10 @@ public class StickManager {
         }
         return true;
     }
+
+    public int getCurrentNumberOfStick() {
+        return currentNumberOfStick;
+    }
+    
+    
 }

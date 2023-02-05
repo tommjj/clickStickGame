@@ -3,7 +3,6 @@ package entities;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import static utilz.Constants.Entities.StickConstants.HORIZONTAL;
 import static utilz.Constants.Entities.StickConstants.*;
 import utilz.Constants.GameConstants;
 
