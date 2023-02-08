@@ -26,7 +26,7 @@ public class NumberDisplay {
 
         numberImg = new BufferedImage[10];
         for (int i = 0; i < 10; i++) {
-            numberImg[i] = temp.getSubimage(155 * i, 45, 155, 211);
+            numberImg[i] = temp.getSubimage(168 * i, 38, 168, 218);
         }
 
     }

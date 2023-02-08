@@ -6,8 +6,6 @@ import gameStates.Playing;
 import java.awt.Graphics;
 import ui.Background;
 import ui.NumberDisplay;
-import utilz.Constants;
-import utilz.Constants.GameConstants;
 
 public class Game implements Runnable {
 
@@ -29,8 +27,7 @@ public class Game implements Runnable {
         
         gamePanel.setFocusable(true);
         gamePanel.requestFocus();
-        
-        
+           
         startGameLoop();
     }
 

@@ -1,7 +1,5 @@
 package ui;
 
-import gameStates.Playing;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import main.Game;
@@ -18,7 +16,7 @@ public class Background {
     public Background(Game game) {
         this.game = game;
         loadImg();
-        numberDisplay = new NumberDisplay((Constants.GameConstants.GAME_WIDTH - NumberDisplayContants.WIDTH_SIZE)-(int)(10 * GameConstants.SCALE), (Constants.GameConstants.GAME_HEIGHT / 2)-(NumberDisplayContants.HEIGHT_SIZE/2),NumberDisplayContants.WIDTH_SIZE,NumberDisplayContants.HEIGHT_SIZE , 50);
+        numberDisplay = new NumberDisplay((GameConstants.GAME_WIDTH - NumberDisplayContants.WIDTH_SIZE)-(int)(10 * GameConstants.SCALE), (GameConstants.GAME_HEIGHT / 2)-(NumberDisplayContants.HEIGHT_SIZE/2),NumberDisplayContants.WIDTH_SIZE,NumberDisplayContants.HEIGHT_SIZE , 50);
     }
     
     public void loadImg() {

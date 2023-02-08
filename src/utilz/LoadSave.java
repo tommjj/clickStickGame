@@ -12,6 +12,7 @@ public class LoadSave {
     
     public static final String NUMBERS_IMG = "Image/numbers_img.png";
     public static final String BACKGROUND_IMG = "Image/background_img.png";
+    public static final String MENU_BUTTON_IMG = "Image/menu_buttons_img.png";
     
     public static BufferedImage getSpriteAtlas(String path) {
         InputStream is = LoadSave.class.getResourceAsStream("/" + path);

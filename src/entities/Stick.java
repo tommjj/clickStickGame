@@ -44,8 +44,7 @@ public class Stick {
         g.setColor(color);
         g.fillRect(stick.x, stick.y, stick.width, stick.height);
         
-//        g.setColor(Color.black);
-//        g.drawRect(stick.x+1, stick.y+1, stick.width-2, stick.height-2);     
+             
         
         g.setColor(Color.BLACK);
         g.drawRect(stick.x, stick.y, stick.width, stick.height);

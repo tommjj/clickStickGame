@@ -5,8 +5,16 @@ import static utilz.Constants.GameConstants.SCALE;
 public class Constants {
     public static class UI {
         public static class NumberDisplayContants {
-            public static final int WIDTH_DEFAULT_SIZE = 155*3;
-            public static final int HEIGHT_DEFAULT_SIZE = 216;
+            public static final int WIDTH_DEFAULT_SIZE = 168*3;
+            public static final int HEIGHT_DEFAULT_SIZE = 218;
+
+            public static final int WIDTH_SIZE = (int) (WIDTH_DEFAULT_SIZE * SCALE);
+            public static final int HEIGHT_SIZE = (int) (HEIGHT_DEFAULT_SIZE * SCALE);
+        }
+        
+        public static class MenuButtonsContants {
+            public static final int WIDTH_DEFAULT_SIZE = 500;
+            public static final int HEIGHT_DEFAULT_SIZE = 140;
 
             public static final int WIDTH_SIZE = (int) (WIDTH_DEFAULT_SIZE * SCALE);
             public static final int HEIGHT_SIZE = (int) (HEIGHT_DEFAULT_SIZE * SCALE);

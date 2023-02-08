@@ -1,13 +1,10 @@
 package gameStates;
 
 import entities.StickManager;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import main.Game;
-import ui.NumberDisplay;
-import utilz.Constants.GameConstants;
 
 public class Playing extends State implements Statemethods {
 
